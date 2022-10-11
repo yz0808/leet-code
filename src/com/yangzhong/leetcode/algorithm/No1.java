@@ -22,11 +22,13 @@ public class No1 {
      */
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            int a = target - nums[i];
-            if (map.get(a) != null) {
-                int[] array = {i, map.get(a)};
-                return array;
+        map.put(nums[0], 0);
+        for (int i = 1; i < nums.length; i++) {
+            if (map.get(target - nums[i]) != null) {
+                int[] ints = new int[2];
+                ints[0] = map.get(target - nums[i]);
+                ints[1] = i;
+                return ints;
             }
             map.put(nums[i], i);
         }
